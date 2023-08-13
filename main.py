@@ -50,7 +50,7 @@ def timer(func):
 def random_color(x=None, max_=10):
     x = [Color('red'), Color('green'), Color('blue'), Color('white')] if x is None else x
     random.shuffle(x)
-    num, container = [max_, []]
+    num, container = max_, []
     last = None
     for i, color in enumerate(x):
         i += 1
@@ -68,9 +68,12 @@ def random_color(x=None, max_=10):
 @timer
 def sorting(container: list = None):
     container = [Color('')] if container is None else container
-    parent, output = [{}, []]
+    parent, output = {}, []
     for i in container:
-        parent[str(i.value())] = [i] if str(i.value()) not in parent else parent[str(i.value())].append(i)
+        if str(i.value()) not in parent:
+            parent[str(i.value())] = [i]
+        else:
+            parent[str(i.value())].append(i)
     for index in range(len(parent)):
         index += 1
         output.extend(parent[str(index)])
