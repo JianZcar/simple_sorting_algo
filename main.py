@@ -10,7 +10,11 @@ class Color:
         return self.color
 
     def __repr__(self):
-        return self.color
+        return {'red': '🟥',
+                'green': '🟩',
+                'blue': '🟦',
+                'white': '⬜'
+                }[self.color]
 
     def value(self):
         # value should start from 1
