@@ -49,19 +49,9 @@ def timer(func):
 
 def random_color(x=None, max_=10):
     x = [Color('red'), Color('green'), Color('blue'), Color('white')] if x is None else x
-    random.shuffle(x)
-    num, container = max_, []
-    last = None
-    for i, color in enumerate(x):
-        i += 1
-        rand_num = random.randint(1, num - (len(x) - i))
-        num -= rand_num
-        last = color
-        [container.append(color) for _ in range(rand_num)]
-    if len(container) < max_:
-        container.extend([last for _ in range(max_ - len(container))])
-
-    random.shuffle(container)
+    container = []
+    for i in range(max_):
+        container.append(random.choice(x))
     return container
 
 
